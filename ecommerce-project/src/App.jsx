@@ -9,6 +9,10 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import './App.css'
 import { useEffect } from 'react';
 
+//This makes axios available in the console.
+// - Then, we can try axios.post('/api/reset') in the Console.
+window.axios = axios;
+
 function App() {
   const [cart, setCart] = useState([]);
 
