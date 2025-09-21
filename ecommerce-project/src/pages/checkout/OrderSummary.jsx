@@ -1,3 +1,4 @@
+import axios from "axios";
 import { DeliveryDate } from "./DeliveryDate";
 import { CartItemDetails } from "./CartItemDetails";
 import { DeliveryOptions } from "./DeliveryOptions";
@@ -7,6 +8,11 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
     <div className="order-summary">
       {deliveryOptions.length > 0 && cart.map((cartItem) => {
 
+        const deleteCartItem = async() => {
+          await axios.delete(`/api/cart-items/${cartItem.productId}`);
+          await loadCart();
+        }
+
         return (
           <div key={cartItem.productId} className="cart-item-container">
             <DeliveryDate
@@ -15,7 +21,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
             />
 
             <div className="cart-item-details-grid">
-              <CartItemDetails cartItem={cartItem} />
+              <CartItemDetails cartItem={cartItem} deleteCartItem={deleteCartItem} />
 
               <DeliveryOptions
                 deliveryOptions={deliveryOptions}
