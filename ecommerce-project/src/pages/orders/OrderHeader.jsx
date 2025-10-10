@@ -8,7 +8,9 @@ export function OrderHeader({order}) {
         <div className="order-date">
           <div className="order-header-label">Order Placed:</div>
           <div data-testid="order-date">
-            {dayjs(order.orderTimeMs).format('MMMM D, YYYY')}
+            {/* Convert orderTimeMs to a Number because PostgreSQL (used on Render) returns BIGINT as a string.
+              On my local setup, SQLite returns BIGINT as a number, so it worked fine without conversion. */}
+            {dayjs(Number(order.orderTimeMs)).format('MMMM D, YYYY')} 
           </div>
         </div>
         <div className="order-total">
