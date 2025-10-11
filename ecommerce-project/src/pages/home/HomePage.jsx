@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import { Header } from '../../components/Header';
 import { ProductsGrid } from './ProductsGrid';
+import { ResetButton } from '../../components/ResetButton';
 import './HomePage.css';
 
 export function HomePage({ cart, loadCart }) {
@@ -30,6 +31,8 @@ export function HomePage({ cart, loadCart }) {
       <div className="home-page">
         <ProductsGrid products={products} loadCart={loadCart} />
       </div>
+
+      <ResetButton />
     </>
   );
 }

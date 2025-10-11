@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Header } from '../../components/Header';
 import { OrdersGrid } from './OrdersGrid';
+import { ResetButton } from '../../components/ResetButton';
 import './OrdersPage.css';
 
 export function OrdersPage({ cart, loadCart }) {
@@ -28,6 +29,8 @@ export function OrdersPage({ cart, loadCart }) {
 
         <OrdersGrid orders={orders} loadCart={loadCart} />
       </div>
+
+      <ResetButton />
     </>
   );
 }
